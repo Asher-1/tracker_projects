@@ -19,7 +19,8 @@ if __name__ == '__main__':
     # Parametry konstruktora:
     ROOT_PATH = os.path.dirname(__file__)
     # 设置加载的视频文件
-    videoPath = os.path.join(ROOT_PATH, "test/video_3.flv")
+    # videoPath = os.path.join(ROOT_PATH, "test/video_3.flv")
+    videoPath = 0
     scale = 0.5
     distance = 70
     mini_match_count = 6
@@ -34,10 +35,13 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture(videoPath)
 
     # read first frame and set patter images
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
     ret, frame = cap.read()
-    num_frame = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    cv2.imwrite("./tmp.png", frame)
 
-    cap.set(cv2.CAP_PROP_POS_FRAMES, 5000)
+    # num_frame = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    # cap.set(cv2.CAP_PROP_POS_FRAMES, 2000)
     tracker.set_pattern_images(frame)
 
     # 如果无法读取视频文件就退出

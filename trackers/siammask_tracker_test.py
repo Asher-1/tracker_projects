@@ -19,6 +19,10 @@ if __name__ == '__main__':
     # Parse Image file
     cap = cv2.VideoCapture("test/video_3.flv")
     ret, frame = cap.read()
+
+    num_frame = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    # cap.set(cv2.CAP_PROP_POS_FRAMES, 2000)
+
     # 如果无法读取视频文件就退出
     if not ret:
         print('Failed to read video')
@@ -44,7 +48,7 @@ if __name__ == '__main__':
         if f == 0:  # init
             tracker.ini_tracker(im, init_rect)
         elif f > 0:  # tracking
-            im = tracker.update(im, display=False)  # track
+            im = tracker.update(im, display=True)  # track
             bboxes = tracker.get_bounding_boxes()
             tools.draw_targets(img=im, rect_list=bboxes)
             cv2.imshow('camera1', im)

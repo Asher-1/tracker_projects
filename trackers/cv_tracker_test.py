@@ -24,6 +24,9 @@ if __name__ == '__main__':
 
     # 读取第一帧
     ret, frame = cap.read()
+    num_frame = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    cap.set(cv2.CAP_PROP_POS_FRAMES, 2000)
+
     cv_tracker = CvTracker(method=TrackerType.MEDIANFLOW, verbose=False)
 
     # 如果无法读取视频文件就退出
