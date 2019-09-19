@@ -19,8 +19,8 @@ if __name__ == '__main__':
     # Parametry konstruktora:
     ROOT_PATH = os.path.dirname(__file__)
     # 设置加载的视频文件
-    # videoPath = os.path.join(ROOT_PATH, "test/video_3.flv")
-    videoPath = 0
+    videoPath = os.path.join(ROOT_PATH, "test/video_3.flv")
+    # videoPath = 0
     scale = 0.5
     distance = 70
     mini_match_count = 6
